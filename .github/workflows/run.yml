@@ -20,6 +20,10 @@ jobs:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
+    env:
+      EXTRA_ARGS: abc
+      
+
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -38,11 +42,11 @@ jobs:
 
       - name: x
         run: |
-          echo "EXTRA_ARGS=' --enable-resilient-libraries'" >> $GITHUB_ENV
+          echo "EXTRA_ARGS='${{ env.EXTRA_ARGS }} --enable-resilient-libraries'" >> $GITHUB_ENV
 
       - name: x
         run: |
-          echo "EXTRA_ARGS=' --enable-resilient-libraries'" >> $GITHUB_ENV
+          echo "EXTRA_ARGS='${{ env.EXTRA_ARGS }} --enable-resilient-libraries'" >> $GITHUB_ENV
 
       - run: |
           echo ${{ env.EXTRA_ARGS }}
