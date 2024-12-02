@@ -42,11 +42,11 @@ jobs:
 
       - name: x
         run: |
-          echo "EXTRA_ARGS='${{ env.EXTRA_ARGS }} --enable-resilient-libraries'" >> $GITHUB_ENV
+          echo "EXTRA_ARGS=${{ env.EXTRA_ARGS }} --enable-resilient-libraries" >> $GITHUB_ENV
 
       - name: x
         run: |
-          echo "EXTRA_ARGS='${{ env.EXTRA_ARGS }} --enable-resilient-libraries'" >> $GITHUB_ENV
+          echo "EXTRA_ARGS=${{ env.EXTRA_ARGS }} --enable-resilient-libraries" >> $GITHUB_ENV
 
       - run: |
           echo ${{ env.EXTRA_ARGS }}
