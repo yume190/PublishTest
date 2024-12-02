@@ -25,20 +25,30 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
 
-      - name: Setup git
+      - name: Extract string
+        id: extract
         run: |
-          git config --global url."https://${{ secrets.PAT }}@github.com/".insteadOf "https://github.com/"
-          git config --global user.email "yume190@gmail.com"
-          git config --global user.name "yume190"
-      - name: clone
+          full_path="swift-precompiled/swift-syntax"
+          extracted_part=${full_path#*/}
+          echo "::set-output name=extracted::$extracted_part"
+      - name: Use extracted string
         run: |
-          git clone https://github.com/swift-precompiled/swift-syntax
-      # Runs a set of commands using the runners shell
-      - name: push
-        run: |
-          cd swift-syntax
-          echo "---" >> README.md
-          git add README.md
-          git commit -m "test"
-          git push
+          echo "Using extracted part: ${{ steps.extract.outputs.extracted }}"
+
+      # - name: Setup git
+      #   run: |
+      #     git config --global url."https://${{ secrets.PAT }}@github.com/".insteadOf "https://github.com/"
+      #     git config --global user.email "yume190@gmail.com"
+      #     git config --global user.name "yume190"
+      # - name: clone
+      #   run: |
+      #     git clone https://github.com/swift-precompiled/swift-syntax
+      # # Runs a set of commands using the runners shell
+      # - name: push
+      #   run: |
+      #     cd swift-syntax
+      #     echo "---" >> README.md
+      #     git add README.md
+      #     git commit -m "test"
+      #     git push
           
