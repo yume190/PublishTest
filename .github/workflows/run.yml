@@ -36,6 +36,18 @@ jobs:
         run: |
           echo "Using extracted part: ${{ env.extracted }}"
 
+      - name: x
+        run: |
+          echo "EXTRA_ARGS=' --enable-resilient-libraries'" >> $GITHUB_ENV
+
+      - name: x
+        run: |
+          echo "EXTRA_ARGS=' --enable-resilient-libraries'" >> $GITHUB_ENV
+
+      - run: |
+          echo ${{ env.EXTRA_ARGS }}
+      
+
       # - name: Setup git
       #   run: |
       #     git config --global url."https://${{ secrets.PAT }}@github.com/".insteadOf "https://github.com/"
