@@ -30,10 +30,11 @@ jobs:
         run: |
           full_path="swift-precompiled/swift-syntax"
           extracted_part=${full_path#*/}
-          echo "::set-output name=extracted::$extracted_part"
+          echo "extracted=$extracted_part" >> $GITHUB_ENV
+
       - name: Use extracted string
         run: |
-          echo "Using extracted part: ${{ steps.extract.outputs.extracted }}"
+          echo "Using extracted part: ${{ env.extracted }}"
 
       # - name: Setup git
       #   run: |
