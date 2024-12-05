@@ -22,12 +22,22 @@ jobs:
 
     env:
       EXTRA_ARGS: abc
+      VERSIONS: "600.0.0,600.1"
+
+
       
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
+
+      - name: for
+        run: |
+          IFS=',' read -r -a version_array <<< "${{ env.VERSIONS }}"
+          
+          echo "First element: ${version_array[0]}"
+          echo "Second element: ${version_array[1]}"
 
       - name: Extract string
         id: extract
