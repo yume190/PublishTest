@@ -38,6 +38,9 @@ jobs:
           
           echo "First element: ${version_array[0]}"
           echo "Second element: ${version_array[1]}"
+          for ((index = 0; index < ${#version_array[@]}; index++)); do
+            echo "Version at index $index: ${version_array[index]}"
+          done
 
       - name: Extract string
         id: extract
